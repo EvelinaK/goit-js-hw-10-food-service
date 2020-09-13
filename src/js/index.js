@@ -1,16 +1,16 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const Theme = {
-    LIGHT: 'light-theme',
-    DARK: 'dark-theme',
-  };
+const Theme = {
+  LIGHT: 'light-theme',
+  DARK: 'dark-theme',
+};
 
+document.addEventListener('DOMContentLoaded', () => {
   const SwitchInput = document.querySelector('.js-switch-input');
   const themeBody = document.querySelector('body');
   const checkedTheme = document.getElementById('theme-switch-control');
   const Windowtheme = localStorage.getItem('checked');
   themeBody.classList.add(Theme.LIGHT);
 
-  const RadioBut = () => {
+  const togleTheme = () => {
     if (Windowtheme === 'true') {
       themeBody.classList.replace(Theme.LIGHT, Theme.DARK);
       checkedTheme.checked = true;
@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
       checkedTheme.checked = false;
     }
   };
-  RadioBut();
-  const changeTheme = event => {
-    if (event.target.checked) {
+  togleTheme();
+  const changeTheme = ({ target }) => {
+    if (target.checked) {
       themeBody.classList.replace(Theme.LIGHT, Theme.DARK);
       localStorage.setItem('checked', 'true');
     } else {
